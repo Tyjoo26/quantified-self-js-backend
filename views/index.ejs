@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quantified Self Backend</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Quantified Self Backend</h1>
+    <p>This is the backend for our <a href="https://tyjoo26.github.io/quantified-self">Quantified Self Front-End</a> </p>
+    <p>
+      The following endpoints are available.
+      All endpoints return the data as JSON
+    </p>
+
+    <h2>Food Endpoints:</h2>
+    <ul>
+      <li>
+        <strong>GET /api/v1/foods</strong>
+         - returns all foods currently in the database
+      </li>
+      <li>
+        <strong>GET /api/v1/foods/:id</strong>
+         - returns the food object with the specific :id you've passed or 404 if the food is not found
+      </li>
+      <li>
+        <strong>POST /api/v1/foods</strong>
+        - allows creating a new food with parameters:
+        <br><strong>{ food: {name: "Name of food", calories: "Food Calories" } }</strong>
+        <br>If food is successfully created, the food item will be returned.
+        If the food is not successfully created, a 400 status code will be returned.
+        Both name and calories are required fields.
+      </li>
+      <li>
+        <strong>PATCH /api/v1/foods/:id</strong>
+         - allows update of an existing food with parameters:
+        <br><strong>{ food: {name: "Name of food", calories: "Food Calories" } }</strong>
+        <br>If food is successfully updated, the food item will be returned.
+        If the food is not successfully updated, a 400 status code will be returned.
+        Both name and calories are required fields.
+      </li>
+      <li>
+        <strong>DELETE /api/v1/foods/:id</strong>
+         - will delete food with the id passed in. If the food can't be found. a 404 is returned
+      </li>
+    </ul>
+
+    <h2>Meal Endpoints:</h2>
+    <ul>
+      <li>
+        <strong>GET /api/v1/meals</strong>
+         - returns all the meals in the database along with their associated foods
+      </li>
+      <li>
+        <strong>GET /api/v1/meals/:meal_id/foods</strong>
+         - returns the meal with :meal_id and all foods associated with it.
+         Returns 404 if the meal is not found
+      </li>
+      <li>
+        <strong>POST /api/v1/meals/:meal_id/foods/:food_id</strong>
+         - adds the food with :food_id to the meal with :meal_id. If either the
+         meal or food cannot be found, a 404 will be returned.
+      </li>
+      <li>
+        <strong>DELETE /api/v1/meals/:meal_id/foods/:food_id</strong>
+         - remove the food with :food_id from the meal with :meal_id. If either the
+         meal or food cannot be found, a 404 will be returned.
+      </li>
+    </ul>
+  </body>
+</html>
