@@ -1,10 +1,15 @@
 var Food = require('../models/food')
 
-let food = new Food
+let foods = new Food
 
 class FoodsController {
   index(req, res) {
-    food.all()
+    foods.all()
+      .then((data) => {res.send(data.rows)})
+  }
+
+  show(req, res) {
+    foods.find(req.params.id)
       .then((data) => {res.send(data.rows)})
   }
 }
