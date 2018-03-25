@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var apiV1FoodsRouter = require('./routes/api/v1/foods');
+var apiV1FoodsRouter = require('./routes/api/v1/foods-router');
 
 var app = express();
 
