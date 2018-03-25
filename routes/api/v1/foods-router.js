@@ -8,4 +8,9 @@ router.get('/', function(req, res) {
   foodsController.index(req, res)
 });
 
+router.get('/:id', function(req, res) {
+  foodsController.show(req, res)
+});
+
+
 module.exports = router;
