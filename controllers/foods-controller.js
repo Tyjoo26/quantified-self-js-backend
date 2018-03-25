@@ -22,6 +22,11 @@ class FoodsController {
     foods.update(req.params.id, req.body.food)
       .then((data) => {res.send(data.rows)})
   }
+
+  destroy(req, res) {
+    foods.destroy(req.params.id)
+      .then((data) => {res.send(data.rows)})
+  }
 }
 
 module.exports = FoodsController

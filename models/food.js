@@ -20,6 +20,9 @@ class Food {
       WHERE id = ?
       RETURNING *`, [params.name, params.calories, id])
   }
+  destroy(id) {
+    return database.raw(`DELETE FROM foods WHERE id= ?`, id)
+  }
 }
 
 module.exports = Food
