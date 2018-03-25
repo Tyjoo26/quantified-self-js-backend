@@ -17,6 +17,11 @@ class FoodsController {
     foods.create(req.body.food)
       .then((data) => {res.send(data.rows)})
   }
+
+  update(req, res) {
+    foods.update(req.params.id, req.body.food)
+      .then((data) => {res.send(data.rows)})
+  }
 }
 
 module.exports = FoodsController

@@ -14,6 +14,12 @@ class Food {
     VALUES(?, ?)
     RETURNING *`, [params.name, params.calories])
   }
+  update(id, params) {
+    return database.raw(`UPDATE foods
+      SET name = ?, calories = ?
+      WHERE id = ?
+      RETURNING *`, [params.name, params.calories, id])
+  }
 }
 
 module.exports = Food

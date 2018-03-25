@@ -16,4 +16,8 @@ router.post("/", function(req, res) {
   foodsController.create(req, res)
 })
 
+router.patch("/:id", function(req, res) {
+  foodsController.update(req, res)
+})
+
 module.exports = router;
