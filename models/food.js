@@ -6,6 +6,9 @@ class Food {
   all() {
     return database.raw('SELECT * FROM foods')
   }
+  find(id) {
+    return database.raw('SELECT * FROM foods WHERE id= ?', id)
+  }
 }
 
 module.exports = Food
