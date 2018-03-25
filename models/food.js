@@ -9,6 +9,11 @@ class Food {
   find(id) {
     return database.raw('SELECT * FROM foods WHERE id= ?', id)
   }
+  create(params) {
+    return database.raw(`INSERT INTO foods(name, calories)
+    VALUES(?, ?)
+    RETURNING *`, [params.name, params.calories])
+  }
 }
 
 module.exports = Food

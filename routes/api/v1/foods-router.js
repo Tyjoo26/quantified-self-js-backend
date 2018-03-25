@@ -12,5 +12,8 @@ router.get('/:id', function(req, res) {
   foodsController.show(req, res)
 });
 
+router.post("/", function(req, res) {
+  foodsController.create(req, res)
+})
 
 module.exports = router;
