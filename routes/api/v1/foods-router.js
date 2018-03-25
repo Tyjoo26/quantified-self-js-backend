@@ -20,4 +20,8 @@ router.patch("/:id", function(req, res) {
   foodsController.update(req, res)
 })
 
+router.delete("/:id", function(req, res){
+  foodsController.destroy(req, res)
+})
+
 module.exports = router;
