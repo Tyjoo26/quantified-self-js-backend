@@ -4,24 +4,14 @@ var FoodsController = require('../../../controllers/foods-controller')
 
 let foodsController = new FoodsController
 
-router.get('/', function(req, res) {
-  foodsController.index(req, res)
-});
+router.get('/', foodsController.index;
 
-router.get('/:id', function(req, res) {
-  foodsController.show(req, res)
-});
+router.get('/:id', foodsController.show);
 
-router.post("/", function(req, res) {
-  foodsController.create(req, res)
-})
+router.post("/", foodsController.create)
 
-router.patch("/:id", function(req, res) {
-  foodsController.update(req, res)
-})
+router.patch("/:id", foodsController.update)
 
-router.delete("/:id", function(req, res){
-  foodsController.destroy(req, res)
-})
+router.delete("/:id", foodsController.destroy)
 
 module.exports = router;
