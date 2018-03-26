@@ -4,11 +4,11 @@ let meals = new Meal
 
 class MealsController {
   index(req, res) {
-    meals.mealsWithFoods(meals.all())
+    meals.groupFoodsByMeal(meals.allMealsWithFoods())
       .then((data) => res.send(data))
   }
   show(req,res) {
-    meals.mealsWithFoods(meals.show(req.params.id))
+    meals.groupFoodsByMeal(meals.show(req.params.id))
       .then((data) => res.send(data[0]))
   }
   create(req, res) {

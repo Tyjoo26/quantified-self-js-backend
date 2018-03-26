@@ -7,7 +7,7 @@ class Meal {
   all() {
     return database.raw('SELECT * FROM meals')
   }
-  mealsWithFoods() {
+  allMealsWithFoods() {
     return database.raw(`
       SELECT meals.id AS meal_id,
              meals.name AS meal_name,
@@ -18,32 +18,31 @@ class Meal {
       INNER JOIN meal_foods ON meals.id = meal_foods.meal_id
       INNER JOIN foods on foods.id = meal_foods.food_id`)
   }
-  mealsWithFoods(collection) {
-   return collection
-     .then((data) => {
-       let rows = data.rows
-       let mealFoods = rows.reduce((result, row) => {
-         if (!result[row.meal_id]) {
-           result[row.meal_id] = {
-             id: row.meal_id,
-             name: row.meal_name,
-             foods: []}
-         }
-         let food = {
-           id: row.food_id,
-           name: row.food_name,
-           calories: row.food_calories
-         }
-         result[row.meal_id].foods.push(food)
-         return result
-       }, {})
-       let mealOutput = []
-       for (let meal in mealFoods) {
-         mealOutput.push(mealFoods[meal])
+  groupFoodsByMeal(collection) {
+    return collection.then((data) => {
+     let rows = data.rows
+     let mealFoods = rows.reduce((result, row) => {
+       if (!result[row.meal_id]) {
+         result[row.meal_id] = {
+           id: row.meal_id,
+           name: row.meal_name,
+           foods: []}
        }
-       return mealOutput
-     })
- }
+       let food = {
+         id: row.food_id,
+         name: row.food_name,
+         calories: row.food_calories
+       }
+       result[row.meal_id].foods.push(food)
+       return result
+     }, {})
+     let mealOutput = []
+     for (let meal in mealFoods) {
+       mealOutput.push(mealFoods[meal])
+     }
+     return mealOutput
+    })
+  }
   show(id) {
     return database.raw(`SELECT meals.id AS meal_id,
       meals.name AS meal_name,
