@@ -14,7 +14,10 @@ class FoodsController {
 
   create(req, res, next) {
     Food.create(req.body.food)
-      .then((data) => {res.send(data.rows[0])})
+      .then((data) => {
+        console.log(data.rows[0])
+        res.send(data.rows[0])
+      })
   }
 
   update(req, res, next) {
