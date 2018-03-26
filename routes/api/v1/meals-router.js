@@ -9,6 +9,9 @@ router.get("/", function(req, res) {
   mealsController.index(req, res)
 })
 
+router.get('/:id/foods', function(req, res) {
+  mealsController.show(req, res)
+})
 
 
 
