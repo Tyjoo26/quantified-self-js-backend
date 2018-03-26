@@ -5,16 +5,12 @@ var MealsController = require('../../../controllers/meals-controller')
 let mealsController = new MealsController
 
 
-router.get("/", function(req, res) {
-  mealsController.index(req, res)
-})
+router.get("/", mealsController.index)
 
-router.get('/:id/foods', function(req, res) {
-  mealsController.show(req, res)
-})
+router.get('/:id/foods', mealsController.show)
 
+router.post("/:meal_id/foods/:food_id", mealsController.create)
 
-
-
+router.delete("/:meal_id/foods/:food_id", mealsController.destroy)
 
 module.exports = router;
