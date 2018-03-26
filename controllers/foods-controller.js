@@ -13,6 +13,7 @@ class FoodsController {
   }
 
   create(req, res, next) {
+    console.log(req.body.food)
     Food.create(req.body.food)
       .then((data) => {
         console.log(data.rows[0])
@@ -26,8 +27,12 @@ class FoodsController {
   }
 
   destroy(req, res, next) {
+    console.log(req.params.id)
     Food.destroy(req.params.id)
-      .then((data) => {res.send(data.rows)})
+      .then((data) => {
+        console.log(data.rows)
+        res.send(data.rows)
+      })
   }
 }
 
