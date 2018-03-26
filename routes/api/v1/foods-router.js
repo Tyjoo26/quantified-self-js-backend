@@ -4,7 +4,7 @@ var FoodsController = require('../../../controllers/foods-controller')
 
 let foodsController = new FoodsController
 
-router.get('/', foodsController.index;
+router.get('/', foodsController.index);
 
 router.get('/:id', foodsController.show);
 
