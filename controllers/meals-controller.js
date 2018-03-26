@@ -7,6 +7,10 @@ class MealsController {
     Meal.mealsWithFoods()
       .then((data) => {res.send(data)})
   }
+  show(req,res) {
+    meals.show(req.params.id)
+      .then((data) => )
+  }
 }
 
 
