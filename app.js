@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+var indexRouter = require('./routes/index')
 var apiV1FoodsRouter = require('./routes/api/v1/foods-router');
 var apiV1MealsRouter = require('./routes/api/v1/meals-router');
 
@@ -27,6 +28,7 @@ app.use(function(req, res, next) {
 });
 
 
+app.use('/', indexRouter);
 app.use('/api/v1/foods', apiV1FoodsRouter);
 app.use('/api/v1/meals', apiV1MealsRouter);
 
