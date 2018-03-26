@@ -5,6 +5,9 @@ const database = require('knex')(configuration)
 
 class Meal {
   all() {
+    return database.raw('SELECT * FROM meals')
+  }
+  mealsWithFoods() {
     return database.raw(`
       SELECT meals.id AS meal_id,
              meals.name AS meal_name,
